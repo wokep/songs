@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Song Collection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #121212;
+            color: #fff;
+        }
+        header {
+            background: linear-gradient(45deg, #ff6f61, #de4a93);
+            padding: 20px;
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #232323;
+            padding: 10px 0;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2em;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ff6f61;
+        }
+        .container {
+            padding: 20px;
+        }
+        .song-card {
+            background: #2c2c2c;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .song-card h3 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+        .song-card button {
+            background: #ff6f61;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .song-card button:hover {
+            background: #de4a93;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #232323;
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+        @media (max-width: 768px) {
+            .song-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        My Song Collection
+    </header>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#songs">Songs</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <div class="container">
+        <div class="song-card">
+            <h3>Song Title 1</h3>
+            <button onclick="playSong('song1.mp3')">Play</button>
+        </div>
+        <div class="song-card">
+            <h3>Song Title 2</h3>
+            <button onclick="playSong('song2.mp3')">Play</button>
+        </div>
+        <!-- Add more song cards as needed -->
+    </div>
+    <footer>
+        &copy; 2024 My Song Collection. All rights reserved.
+    </footer>
+
+    <script>
+        function playSong(song) {
+            alert(`Playing ${song}`);
+            // You can integrate an audio player here
+        }
+    </script>
+</body>
+</html>

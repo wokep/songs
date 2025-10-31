@@ -1,114 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Song Collection</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #121212;
-            color: #fff;
-        }
-        header {
-            background: linear-gradient(45deg, #ff6f61, #de4a93);
-            padding: 20px;
-            text-align: center;
-            font-size: 2em;
-            font-weight: bold;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background: #232323;
-            padding: 10px 0;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 1.2em;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: #ff6f61;
-        }
-        .container {
-            padding: 20px;
-        }
-        .song-card {
-            background: #2c2c2c;
-            border-radius: 10px;
-            padding: 15px;
-            margin: 10px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .song-card h3 {
-            margin: 0;
-            font-size: 1.5em;
-        }
-        .song-card button {
-            background: #ff6f61;
-            border: none;
-            color: #fff;
-            padding: 10px 20px;
-            font-size: 1em;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-        .song-card button:hover {
-            background: #de4a93;
-        }
-        footer {
-            text-align: center;
-            padding: 10px;
-            background: #232323;
-            margin-top: 20px;
-            font-size: 0.9em;
-        }
-        @media (max-width: 768px) {
-            .song-card {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Song Sharing</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #121212;
+      color: #fff;
+    }
+    header {
+      background: linear-gradient(45deg, #ff6f61, #de4a93);
+      padding: 25px;
+      text-align: center;
+      font-size: 2em;
+      font-weight: bold;
+      box-shadow: 0 4px 20px rgba(255, 111, 97, 0.4);
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #232323;
+      padding: 12px 0;
+      gap: 20px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1em;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #ff6f61;
+    }
+    .container {
+      padding: 30px 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    .upload-box {
+      background: #1f1f1f;
+      border: 2px dashed #ff6f61;
+      padding: 25px;
+      border-radius: 10px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .upload-box input {
+      margin-top: 10px;
+    }
+    .song-card {
+      background: #2c2c2c;
+      border-radius: 10px;
+      padding: 15px 20px;
+      margin: 12px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 0 15px rgba(255, 111, 97, 0.2);
+    }
+    .song-card h3 {
+      margin: 0;
+      font-size: 1.2em;
+    }
+    .song-card button {
+      background: #ff6f61;
+      border: none;
+      color: #fff;
+      padding: 10px 18px;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .song-card button:hover {
+      background: #de4a93;
+      transform: scale(1.05);
+    }
+    audio {
+      width: 100%;
+      margin-top: 10px;
+    }
+    footer {
+      text-align: center;
+      padding: 15px 0;
+      background: #232323;
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: #aaa;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        My Song Collection
-    </header>
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#songs">Songs</a>
-        <a href="#contact">Contact</a>
-    </nav>
-    <div class="container">
-        <div class="song-card">
-            <h3>Song Title 1</h3>
-            <button onclick="playSong('song1.mp3')">Play</button>
-        </div>
-        <div class="song-card">
-            <h3>Song Title 2</h3>
-            <button onclick="playSong('song2.mp3')">Play</button>
-        </div>
-        <!-- Add more song cards as needed -->
-    </div>
-    <footer>
-        &copy; 2024 My Song Collection. All rights reserved.
-    </footer>
+  <header>Song Sharing</header>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#songs">Songs</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-    <script>
-        function playSong(song) {
-            alert(`Playing ${song}`);
-            // You can integrate an audio player here
-        }
-    </script>
+  <div class="container">
+    <div class="upload-box">
+      <h2>Upload Your Music 🎵</h2>
+      <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" name="music" accept="audio/*" required />
+        <br /><br />
+        <button type="submit">Upload</button>
+      </form>
+      <p id="status"></p>
+    </div>
+
+    <div id="songList"></div>
+  </div>
+
+  <footer>&copy; 2024 My Song Collection. All rights reserved.</footer>
+
+  <script>
+    const form = document.getElementById("uploadForm");
+    const status = document.getElementById("status");
+    const songList = document.getElementById("songList");
+
+    async function fetchSongs() {
+      const res = await fetch("/uploads");
+      if (res.ok) {
+        const parser = new DOMParser();
+        const html = await res.text();
+        const doc = parser.parseFromString(html, "text/html");
+        const links = [...doc.querySelectorAll("a")].filter(a => a.href.endsWith(".mp3"));
+        songList.innerHTML = links
+          .map(link => {
+            const name = decodeURIComponent(link.textContent);
+            return `
+              <div class="song-card">
+                <h3>${name}</h3>
+                <button onclick="playSong('${link.href}')">Play</button>
+              </div>
+            `;
+          })
+          .join("");
+      }
+    }
+
+    form.onsubmit = async e => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      status.textContent = "Uploading...";
+      const res = await fetch("/upload", {
+        method: "POST",
+        body: formData
+      });
+      const data = await res.json();
+      if (data.file) {
+        status.textContent = "✅ Upload complete!";
+        fetchSongs();
+      } else {
+        status.textContent = "❌ Upload failed.";
+      }
+    };
+
+    function playSong(url) {
+      const audio = document.createElement("audio");
+      audio.controls = true;
+      audio.src = url;
+      document.body.appendChild(audio);
+      audio.play();
+    }
+
+    fetchSongs();
+  </script>
 </body>
 </html>
